@@ -2,8 +2,8 @@ all: build up
 
 build:
 	@echo "Building Docker images..."
-	@mkdir -p /home/fsulvac/data/mariadb
-	@mkdir -p /home/fsulvac/data/wordpress
+	@mkdir -p srcs/data/mariadb
+	@mkdir -p srcs/data/wordpress
 	@docker-compose -f srcs/docker-compose.yml --env-file srcs/.env build
 
 up:
@@ -21,7 +21,7 @@ clean: down
 
 fclean: clean
 	@echo "Removing all Docker data..."
-	@sudo rm -rf /home/fsulvac/data
+	@rm -rf srcs/data
 	@docker system prune -af --volumes
 
 re: fclean all
